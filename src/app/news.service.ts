@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+//import { Response } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,14 @@ export class NewsService {
 
   getNewsByAuthor(author: string) {    
     this.news = this.news.filter(newsItem => newsItem.by === author);
+  }
+
+  async getArticle(articleId:number) {
+    let article = await this.http.get(this.BASE_URL + '/article/' + articleId,  { responseType: 'text' }).toPromise();
+    //console.log('t',test);
+    return article;
+
+    //this.imgUrl = await this.httpClient.get("http://localhost:8300/api/picture", { responseType: 'text' })
+    //.toPromise();
   }
 }

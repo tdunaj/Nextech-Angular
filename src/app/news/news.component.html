@@ -1,6 +1,6 @@
 <div *ngFor="let n of newsService.news">
     <mat-card style="margin:8px;">        
-        <mat-card-title>{{n.title}}</mat-card-title>                    
+        <mat-card-title [routerLink]="['/news', n.id]" style="cursor: pointer;">{{n.title}}</mat-card-title>                    
         <mat-card-content>
             by {{n.by}}
         </mat-card-content>

@@ -10,13 +10,22 @@ import { FormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { NewsSearchComponent } from './news-search/news-search.component';
+import { NavComponent } from './nav/nav.component';
+import { HomeComponent } from './home/home.component';
+import { ArticleComponent } from './article/article.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NewsComponent,
-    NewsSearchComponent
+    NewsSearchComponent,
+    NavComponent,
+    HomeComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +34,8 @@ import { NewsSearchComponent } from './news-search/news-search.component';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
