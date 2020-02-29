@@ -1,5 +1,13 @@
 <mat-card style="margin:8px;">        
     <mat-card-content>
-        {{article}}
+        <div *ngIf="isUrl(article); else isInner">
+            <a href="{{article}}" target="_blank" rel="noopener">{{article}}</a>
+        </div>      
+        <ng-template #isInner>
+            <div [innerHTML]="article"></div>
+        </ng-template>
     </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="warn" (click)="goBack()">Back</button>
+    </mat-card-actions>
 </mat-card>
