@@ -17,9 +17,8 @@ export class ArticleComponent implements OnInit {
   constructor(private newsService:NewsService, private route:ActivatedRoute, private location: Location) { }
 
   async ngOnInit() {    
-    let articleId = this.route.snapshot.params.id
-    this.article = await this.newsService.getArticle(articleId);
-    console.log(this.isUrl(this.article));
+    let articleId = this.route.snapshot.params.id;
+    this.article = await this.newsService.getArticle(articleId);   
   }
 
   isUrl(str)
