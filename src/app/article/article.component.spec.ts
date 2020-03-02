@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { ArticleComponent } from './article.component';
 import { NewsService } from '../news.service';
@@ -64,4 +64,17 @@ describe('ArticleComponent', () => {
 
     expect(result).toBeFalse();
   }); 
+
+  it('ngOnInit should call the newsService and correctly set the article property', () => {
+    let fakeArticle = 'this is a test article';    
+
+    spyOn(newsService, 'getArticle')    
+    .and.returnValue(Promise.resolve(fakeArticle));
+    
+    component.ngOnInit().then(response => {
+      expect(component.article).toEqual(fakeArticle);
+      expect(newsService.getArticle).toHaveBeenCalled();
+    });    
+  });
+
 });
