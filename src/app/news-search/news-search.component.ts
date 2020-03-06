@@ -8,18 +8,18 @@ import { NewsService } from '../news.service';
 })
 export class NewsSearchComponent implements OnInit {
 
-  author = "";
+  author: string = "";
 
   constructor(private newsService:NewsService) { }
 
   ngOnInit(): void {
   }
 
-  getNews() {
+  getNews(): void {
     this.newsService.getNews();    
   }
 
-  doSearch() {    
+  doSearch(): void {    
     this.newsService.getNewsByAuthor(this.author);    
   }
 

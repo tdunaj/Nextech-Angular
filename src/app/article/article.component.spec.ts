@@ -39,8 +39,7 @@ describe('ArticleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ArticleComponent);
     component = fixture.componentInstance;
-    newsService = TestBed.get(NewsService);
-    //activatedRoute = TestBed.get(ActivatedRoute);
+    newsService = TestBed.get(NewsService);    
 
     fixture.detectChanges();
   });

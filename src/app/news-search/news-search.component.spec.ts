@@ -1,8 +1,10 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {By} from "@angular/platform-browser";
 
 import { NewsSearchComponent } from './news-search.component';
 import { NewsService } from '../news.service';
+
 
 describe('NewsSearchComponent', () => {
   let component: NewsSearchComponent;
@@ -45,4 +47,15 @@ describe('NewsSearchComponent', () => {
 
     expect(newsService.getNewsByAuthor).toHaveBeenCalledTimes(1);
   });
+
+  it('clicking the search button should execute the doSearch method', async(() => { 
+    spyOn(component, 'doSearch');
+  
+    let button = fixture.debugElement.nativeElement.querySelector('button');        
+    button.click();
+    
+    fixture.whenStable().then(() => {
+      expect(component.doSearch).toHaveBeenCalled();
+    });
+  }));
 });

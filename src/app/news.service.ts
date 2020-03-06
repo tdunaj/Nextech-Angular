@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NewsService {
 
-  BASE_URL = 'http://localhost:61511/api/news'; //Update to your localhost url
+  BASE_URL: string = 'http://localhost:61511/api/news'; //Update to your localhost url
 
   news: any = [];
 
@@ -15,7 +15,7 @@ export class NewsService {
     this.getNews();
   }
 
-  getNews() {
+  getNews(): void {
     
       this.http.get(this.BASE_URL).subscribe(response => {
         this.news = response;  
@@ -25,11 +25,11 @@ export class NewsService {
       });        
   }
 
-  getNewsByAuthor(author: string) {    
+  getNewsByAuthor(author: string): void {    
     this.news = this.news.filter(newsItem => newsItem.by === author);
   }
 
-  async getArticle(articleId:number) {
+  async getArticle(articleId: number): Promise<string> {
     let article = await this.http.get(this.BASE_URL + '/article/' + articleId,  { responseType: 'text' }).toPromise();
     return article;    
   }
